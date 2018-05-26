@@ -7,14 +7,15 @@ from flask import Flask, request
 
 app=Flask(__name__)
 
-
 @app.route('/',methods=['GET','POST'])
+#check if theres a url, can use it to send data too/find out where its from
 @app.route('/<url>',methods=['GET','POST'])
 def home(url=""):
     #ignore favicon.ico
     if(url == "favicon.ico"):
         return "fuckoff"
 
+    #print out all the request information
     print("\n---------------------------------------------------------------")
     print("URL: " + url)
     print("Request method: " + request.method)
@@ -42,6 +43,8 @@ def home(url=""):
 
     print("---------------------------------------------------------------\n")
 
+    #can return garbage, dont really care about what it gets
+    #(since it will mostly be for sending stuff to my own server)
     return "xd"
 
 if(__name__ == '__main__'):
