@@ -18,17 +18,29 @@ def home(url=""):
     print("\n---------------------------------------------------------------")
     print("URL: " + url)
     print("Request method: " + request.method)
+    print("")
     print(request.headers,end="")
-    print("---------------------------------------------------------------\n")
     
-    #if post, print post contents
+    if(len(request.cookies) > 0):
+        print("Cookies:")
+    for key in request.cookies.keys():
+        print("    " + key + ":" + request.args[key])
+    
+    if(len(request.args) > 0):
+        print("Arguments:")
+    for key in request.args.keys():
+        print("    " + key + ":" + request.args[key])
+   
+   
+   #if post, print post contents
     if(request.method == 'POST'):
-        for keys in request.args.keys():
-            print(key + ":" + request.args[key])
 
-        for keys in request.form.keys():
-            print(key + ":" + request.form[key])
+        if(len(request.form) > 0):
+            print("Form Contents:")
+        for key in request.form.keys():
+            print("    " + key + ":" + request.form[key])
 
+    print("---------------------------------------------------------------\n")
 
     return "xd"
 
