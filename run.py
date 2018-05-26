@@ -21,6 +21,15 @@ def home(url=""):
     print(request.headers,end="")
     print("---------------------------------------------------------------\n")
     
+    #if post, print post contents
+    if(request.method == 'POST'):
+        for keys in request.args.keys():
+            print(key + ":" + request.args[key])
+
+        for keys in request.form.keys():
+            print(key + ":" + request.form[key])
+
+
     return "xd"
 
 if(__name__ == '__main__'):
